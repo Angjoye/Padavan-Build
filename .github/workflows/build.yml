@@ -147,7 +147,7 @@ jobs:
           cache: false
       - uses: actions/setup-node@main
         with:
-          node-version: 18
+          node-version: 16
       - run: node -v
       - name: Prepare environment
         run: |
