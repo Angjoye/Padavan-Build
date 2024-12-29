@@ -116,7 +116,7 @@ on:
         description: 'Delete old workflow runs'
         default: true
 env:
-  FIRMWARE_AUTHOR: TurBoTse
+  FIRMWARE_AUTHOR: Angjoye
   FIRMWARE_BRANCH: main
   FIRMWARE_REPO: padavan
   FIRMWARE_URL: https://github.com/Angjoye/padavan.git
