@@ -145,17 +145,15 @@ jobs:
           go-version: '1.22.3'
           check-latest: true
           cache: false
+      - uses: actions/setup-node@main
+        with:
+          node-version: 18
+      - run: node -v
       - name: Prepare environment
         run: |
           sudo apt-get update && sudo apt-get install -y libtool-bin gperf python3-docutils autopoint gettext ccache ca-certificates curl gnupg
           echo "TRUNK_DIR=${{ github.workspace }}/$FIRMWARE_REPO/trunk" >> $GITHUB_ENV
           echo "Compilation_time=$(TZ='Asia/Shanghai' date +%Y%m%d)" >> $GITHUB_ENV
-          sudo mkdir -p /etc/apt/keyrings
-          curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-          echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_18.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
-          sudo apt update
-          sudo apt install -y nodejs
-          node -v
       - name: Download sources and toolchain
         run: |
           git clone -b $FIRMWARE_BRANCH --depth=1 $FIRMWARE_URL $FIRMWARE_REPO
